@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Showcase | Aithentic - Product Launch Portfolio</title>
+    <meta name="description"
+        content="Explore our portfolio of product launches spanning AI tooling, SaaS platforms, and connected retail. Real results from real partnerships." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" href="./assets/images/aithentic-mark.svg" type="image/svg+xml" />
+    <style>
+        .showcase-hero {
+            background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));
+            padding-top: 140px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(var(--c-brand-rgb), 0.18), transparent 60%);
+        }
+
+        .showcase-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.3s ease;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .project-card:hover {
+            border-color: rgba(var(--c-brand-rgb), 0.3);
+        }
+
+        .project-card__image {
+            position: relative;
+            overflow: hidden;
+            height: 450px;
+            width: 100%;
+        }
+
+        .project-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.05);
+        }
+
+        .project-card__category {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.7rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--c-brand);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card__content {
+            padding: 40px;
+        }
+
+        .project-card__title {
+            color: var(--c-white);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .project-brief {
+            margin-bottom: 30px;
+        }
+
+        .project-brief__section {
+            margin-bottom: 24px;
+        }
+
+        .project-brief__heading {
+            color: var(--c-brand);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-brief__heading i {
+            font-size: 1.2rem;
+        }
+
+        .project-brief__text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: rgba(var(--c-brand-rgb), 0.08);
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-item__value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--c-brand);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .metric-item__label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .btn-live-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--c-brand), var(--c-brand-light));
+            border: none;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.9rem;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-live-project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(var(--c-brand-rgb), 0.4);
+            color: white;
+        }
+
+        .btn-live-project i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-card__image {
+                height: 300px;
+            }
+
+            .project-card__content {
+                padding: 30px 24px;
+            }
+
+            .project-card__title {
+                font-size: 1.5rem;
+            }
+
+            .project-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="./assets/images/aithentic-wordmark.svg" class="brand-logo" alt="Aithentic logo"
+                    loading="lazy" />
+            </a>
+            <button class="navbar-toggler bg-white opacity-50" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/capabilities.html">Capabilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/showcase.html">Showcase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#blog">Insights</a>
+                    </li>
+                </ul>
+                <a href="/contact.html" class="btn btn-brand ms-lg-3">Book a discovery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="showcase-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-2 fw-semibold text-white mb-4">Showcase Library</h1>
+                    <div class="line mx-auto"></div>
+                    <p class="lead text-white-50">Product launches we co-created with visionary teams. From AI platforms to SaaS tools and connected retail experiences?each project transformed complex products into compelling showcase experiences that drive results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-black">
+        <div class="container">
+
+            <!-- Project 1 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image.png" alt="Lattice IQ AI Platform" loading="lazy">
+                    <span class="project-card__category">AI/ML Platform</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">Lattice IQ - AI Decision Intelligence Platform</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">Lattice IQ built a revolutionary AI platform that analyzes market data in real-time, but stakeholders couldn't visualize its power through static decks. The complexity of their machine learning models made it nearly impossible to demonstrate value in traditional sales conversations. They needed an immersive showcase that would make abstract algorithms tangible and prove ROI before a single line of production code was written.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We architected an interactive prototype theatre that visualized data flows in real-time. Using GSAP-powered animations, we created a narrative walkthrough showing how their AI processes millions of data points, identifies patterns, and surfaces actionable insights. The prototype included branching scenarios for different verticals, live data simulations, and presenter notes that guided their sales team through complex technical concepts using simple, compelling storytelling.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">$600K</span>
+                                    <span class="metric-item__label">Deal Closed Week 1</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">85%</span>
+                                    <span class="metric-item__label">Demo-to-Trial Rate</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">3x</span>
+                                    <span class="metric-item__label">Pipeline Velocity</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://latticeiq-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image2.png" alt="Northstar Commerce Platform" loading="lazy">
+                    <span class="project-card__category">E-Commerce SaaS</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">Northstar Commerce - Omnichannel Retail Platform</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">Northstar Commerce had built a powerful omnichannel platform connecting online stores, physical retail, and mobile commerce?but their GTM team struggled to communicate how all the pieces worked together. Enterprise retailers needed to understand the complete ecosystem before committing to a complex migration. Demos felt disjointed, jumping between multiple tools and screens, losing prospects in the technical complexity.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We designed a unified showcase experience that told the complete customer journey story. Starting from a customer browsing online, we animated the entire flow: cart abandonment triggers, in-store pickup notifications, inventory synchronization, and analytics dashboards?all connected in one seamless narrative. We built reusable web components with Next.js that the team could mix and match for different retailer personas, dramatically reducing demo prep time.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">42%</span>
+                                    <span class="metric-item__label">Shorter Sales Cycle</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">12</span>
+                                    <span class="metric-item__label">Enterprise Deals Closed</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">95%</span>
+                                    <span class="metric-item__label">Customer Satisfaction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://northstar-showcase.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image3.png" alt="BGMI Robotics Dashboard" loading="lazy">
+                    <span class="project-card__category">Industrial IoT</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">BGMI Robotics - Manufacturing Intelligence Suite</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">BGMI Robotics developed a sophisticated product customizer for industrial robots, but sales demos took 45+ minutes and lost prospects in technical specifications. Factory decision-makers needed to see how the system would integrate with their existing manufacturing data streams without getting overwhelmed by complexity. Traditional demos failed to communicate the speed and power of their real-time configuration engine.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We created an interactive 3D configurator showcase with live data visualization. Using GSAP ScrollTrigger, we choreographed a step-by-step journey showing how specifications flow from customer requirements through to production floor integration. The showcase included real manufacturing data streams, animated assembly sequences, and ROI calculators that updated in real-time as prospects adjusted configurations. We compressed the entire value proposition into an 18-minute guided experience.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">60%</span>
+                                    <span class="metric-item__label">Faster Demos</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">$2.4M</span>
+                                    <span class="metric-item__label">ARR Growth</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">4.8/5</span>
+                                    <span class="metric-item__label">Demo Feedback Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://bgmi-robotics-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image4.png" alt="Sequence Labs Dashboard" loading="lazy">
+                    <span class="project-card__category">Dev Tools</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">Sequence Labs - API Workflow Automation</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">Sequence Labs built a no-code platform for developers to orchestrate complex API workflows, but investors couldn't grasp the technical innovation during pitch meetings. The product was powerful but abstract?showing code didn't resonate with non-technical stakeholders, yet dumbing it down undermined their technical credibility. They needed a showcase that would impress both technical and business audiences while demonstrating clear category differentiation.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We designed a visual flow builder showcase that demonstrated complex automation through beautiful, animated diagrams. Using GSAP and custom illustrations, we showed API calls flowing through conditional logic, transformations, and error handling?all choreographed like a well-directed film. We created scenario-based demos for different use cases (payment processing, user onboarding, data synchronization) that stakeholders could explore at their own pace, with technical depth available on-demand through expandable code views.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">Series A</span>
+                                    <span class="metric-item__label">$8M Raised</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">10K+</span>
+                                    <span class="metric-item__label">Developer Signups</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">92%</span>
+                                    <span class="metric-item__label">Product Hunt Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://sequence-labs-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image5.png" alt="Waveform Music Platform" loading="lazy">
+                    <span class="project-card__category">Media & Entertainment</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">Waveform - Creator-First Music Distribution</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">Waveform disrupted music distribution by giving independent artists direct control over releases, but explaining the platform's capabilities required walking through multiple user flows (artist portal, label management, analytics dashboards, and fan engagement tools). Traditional demos jumped between disconnected screens, making it hard for potential partners to grasp the complete ecosystem. They needed a cohesive showcase that demonstrated value for all user types simultaneously.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We built an immersive multi-persona showcase that tells parallel stories. Using split-screen animations and synchronized timeline-based sequences, we showed how a single release flows through the platform from artist upload to fan discovery. We integrated actual music samples with animated waveforms, real streaming data visualizations, and interactive revenue projections. The showcase included a live revenue calculator that demonstrated earning potential compared to traditional distribution models?a conversion machine that turned curious visitors into believers.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">500+</span>
+                                    <span class="metric-item__label">Artists Onboarded</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">250%</span>
+                                    <span class="metric-item__label">YoY Revenue Growth</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">45min</span>
+                                    <span class="metric-item__label">Avg Session Duration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://waveform-platform-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="./assets/images/image6.png" alt="HelioGrid Energy Management" loading="lazy">
+                    <span class="project-card__category">Clean Energy</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">HelioGrid - Smart Energy Management System</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">HelioGrid's AI-powered energy management platform optimizes power consumption for commercial buildings in real-time, but enterprise facility managers couldn't visualize the cost savings without seeing their own building data. Generic demos failed to demonstrate ROI convincingly, and customizing presentations for each prospect was prohibitively time-consuming. They needed a flexible showcase that could adapt to different building profiles while maintaining a consistent, impressive narrative.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We engineered a parametric showcase system with real-time data binding. Sales reps input basic building parameters (square footage, current energy costs, region) and our GSAP-powered dashboard instantly generates customized projections with animated charts showing monthly savings, carbon reduction, and payback timelines. We designed interactive "what-if" scenarios where prospects could adjust variables and watch the forecast update in real-time. The showcase included 24-hour energy flow visualizations that made abstract concepts tangible and compelling.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">78%</span>
+                                    <span class="metric-item__label">Win Rate Increase</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">$5.2M</span>
+                                    <span class="metric-item__label">New Pipeline</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">30 Days</span>
+                                    <span class="metric-item__label">Avg Deal Closure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://heliogrid-energy-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 7 - New -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80" alt="DataPulse Analytics" loading="lazy">
+                    <span class="project-card__category">Business Intelligence</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">DataPulse - Real-Time Business Intelligence</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">DataPulse created a revolutionary BI platform that processes millions of records per second, but prospects couldn't grasp the performance advantages during static presentations. Competitors dominated with familiar interfaces while DataPulse's innovative real-time architecture went unappreciated. The team needed to demonstrate their speed advantage in a way that would make executives say "we need this now" rather than "we'll think about it."</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We built a side-by-side comparison showcase that dramatically visualized query performance. Using GSAP's timeline features, we animated data flowing through both their platform and traditional BI tools simultaneously?making the 10x speed difference viscerally obvious. We included live dashboard examples for different industries (retail, finance, healthcare) that updated with simulated real-time data streams. The showcase transformed abstract milliseconds into concrete business value: "see the insight before your competitor does."</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">156%</span>
+                                    <span class="metric-item__label">Demo Request Increase</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">$3.8M</span>
+                                    <span class="metric-item__label">ARR in 6 Months</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">89%</span>
+                                    <span class="metric-item__label">Prospect Engagement</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://datapulse-bi-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 8 - New -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80" alt="CareConnect Telehealth" loading="lazy">
+                    <span class="project-card__category">Healthcare Tech</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">CareConnect - Telehealth Infrastructure Platform</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">CareConnect built HIPAA-compliant telehealth infrastructure serving millions of patients, but healthcare executives struggled to understand how their platform integrated with existing EMR systems. Security concerns and compliance questions dominated conversations before value discussions could begin. The team needed to demonstrate both technical sophistication and ease-of-use simultaneously?a delicate balance that traditional demos couldn't achieve.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We created a multi-layer showcase that revealed complexity progressively. Starting with a simple patient-doctor video call interface, we used smooth GSAP transitions to peel back layers showing data encryption, EMR integration flows, and compliance monitoring?all happening invisibly in the background. We built interactive security walkthroughs and compliance checklists that addressed concerns proactively. The showcase included real-world scenarios (emergency consultations, specialist referrals, medication management) that demonstrated versatility while maintaining focus on patient outcomes.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">18</span>
+                                    <span class="metric-item__label">Healthcare Systems</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">2M+</span>
+                                    <span class="metric-item__label">Patient Visits</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">99.9%</span>
+                                    <span class="metric-item__label">Platform Uptime</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://careconnect-health-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 9 - New -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1600&q=80" alt="FleetSync Logistics" loading="lazy">
+                    <span class="project-card__category">Supply Chain</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">FleetSync - Intelligent Logistics Coordination</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">FleetSync's AI routing engine optimizes delivery networks for enterprise logistics companies, but prospects couldn't see the algorithm working in their demos?it was just numbers changing on screens. Decision-makers needed to understand how thousands of simultaneous route calculations translated to real cost savings and improved delivery times. Static screenshots and spreadsheets failed to convey the platform's sophistication or justify the premium pricing.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We designed an animated map-based showcase that visualizes the entire logistics network in motion. Using GSAP and real geographical data, we created simulations showing trucks being routed, re-routed around traffic, and optimized for fuel efficiency?all in real-time. Color-coded heat maps revealed inefficiencies in current operations versus FleetSync-optimized routes. We built an interactive cost calculator that let prospects input their fleet size and watch projected annual savings animate upward. The showcase transformed abstract optimization into concrete dollar amounts.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">32%</span>
+                                    <span class="metric-item__label">Fuel Cost Reduction</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">$12M</span>
+                                    <span class="metric-item__label">Customer Savings</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">24</span>
+                                    <span class="metric-item__label">Enterprise Clients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://fleetsync-logistics-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 10 - New -->
+            <div class="project-card" data-project-card>
+                <div class="project-card__image" data-project-image>
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="TeamFlow Collaboration" loading="lazy">
+                    <span class="project-card__category">Collaboration Tools</span>
+                </div>
+                <div class="project-card__content">
+                    <h2 class="project-card__title">TeamFlow - Asynchronous Collaboration Platform</h2>
+                    
+                    <div class="project-brief">
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-question-line"></i>The Challenge</h6>
+                            <p class="project-brief__text">TeamFlow built a next-generation collaboration platform for distributed teams, but explaining "asynchronous-first" workflows to companies stuck in meeting-heavy cultures was an uphill battle. Prospects defaulted to comparing features against Slack and Zoom rather than understanding the paradigm shift. The team needed to demonstrate not just what their product does, but why working asynchronously makes teams more productive?a fundamental behavioral change requiring more than a feature walkthrough.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-lightbulb-line"></i>The Solution</h6>
+                            <p class="project-brief__text">We created a narrative-driven showcase that contrasted a typical day with traditional tools versus TeamFlow. Using split-screen animations powered by GSAP, we showed two parallel timelines: one team drowning in meetings, the other collaborating asynchronously with context-rich updates. We animated "deep work hours saved" counters, visualized notification reduction, and demonstrated how threaded conversations captured institutional knowledge better than chat. The showcase included interactive productivity calculators that quantified time savings based on team size?turning philosophy into ROI.</p>
+                        </div>
+
+                        <div class="project-brief__section">
+                            <h6 class="project-brief__heading"><i class="ri-bar-chart-box-line"></i>The Results</h6>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-item__value">15K+</span>
+                                    <span class="metric-item__label">Teams Onboarded</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">40%</span>
+                                    <span class="metric-item__label">Meeting Reduction</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-item__value">4.9/5</span>
+                                    <span class="metric-item__label">User Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://teamflow-collab-demo.aithentic.co" class="btn-live-project" target="_blank">
+                        <span>See Live Project</span>
+                        <i class="ri-external-link-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-12 text-center">
+                    <h3 class="text-white mb-4">Ready to showcase your product like this?</h3>
+                    <a href="/contact.html" class="btn btn-brand btn-lg px-5 py-3">Start Your Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black">
+        <div class="line1"></div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="/" class="footer-brand">
+                            <img src="./assets/images/aithentic-wordmark.svg" alt="Aithentic logo" loading="lazy">
+                        </a>
+                        <div class="line"></div>
+                        <p class="text-white-50">Aithentic choreographs product showcases, demo journeys, and enablement
+                            stacks for teams shipping the future.</p>
+                        <div class="social-icons">
+                            <a class="footer-link" href="https://www.linkedin.com/in/kramit2005" target="_blank"
+                                aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                            <a class="footer-link" href="#" aria-label="Dribbble"><i class="ri-dribbble-line"></i></a>
+                            <a class="footer-link" href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                            <a class="footer-link" href="https://www.behance.net/mayankkumar250" target="_blank"
+                                aria-label="behance"><i class="ri-behance-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Launch stack</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/capabilities.html">Narrative systems</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Interactive prototypes</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Analytics storytelling</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">All services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Resources</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/#blog">Insights hub</a></li>
+                            <li><a class="footer-link" href="/showcase.html">Showcase library</a></li>
+                            <li><a class="footer-link" href="/#reviews">Client notes</a></li>
+                            <li><a class="footer-link" href="/contact.html">Project kickoff</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Stay in the loop</h5>
+                        <div class="line"></div>
+                        <p class="text-white-50">Monthly digest on launch rituals, product storytelling, and motion
+                            systems.</p>
+                        <form class="footer-form" id="footerSubscribe">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                <button class="btn btn-brand" type="submit">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Aithentic Studios. All rights reserved.</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="mb-0">Built for builders who ship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script>
+        // Initialize AOS for simple animations
+        if (window.AOS) {
+            AOS.init({
+                offset: 100,
+                delay: 0,
+                duration: 600,
+                easing: 'ease',
+                once: true
+            });
+        }
+
+        // GSAP ScrollTrigger for project cards with staggered entrance
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate project cards on scroll
+            gsap.utils.toArray('[data-project-card]').forEach((card, index) => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: index * 0.1
+                });
+            });
+
+            // GSAP hover effect for project images
+            gsap.utils.toArray('[data-project-image]').forEach((imageContainer) => {
+                const img = imageContainer.querySelector('img');
+                
+                imageContainer.addEventListener('mouseenter', () => {
+                    gsap.to(img, {
+                        scale: 1.03,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    });
+                });
+
+                imageContainer.addEventListener('mouseleave', () => {
+                    gsap.to(img, {
+                        scale: 1,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+        }
+
+        // Footer subscribe form
+        const footerForm = document.getElementById('footerSubscribe');
+        if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing!');
+                footerForm.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>

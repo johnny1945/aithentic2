@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Capabilities | Aithentic - Product Showcase Studio</title>
+    <meta name="description"
+        content="Explore all 10 specialized capabilities from Aithentic. From UI/UX design to AI/ML interfaces, we deliver immersive product showcase experiences." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" href="./assets/images/aithentic-mark.svg" type="image/svg+xml" />
+    <style>
+        .capabilities-hero {
+            background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));
+            padding-top: 140px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capabilities-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(var(--c-brand-rgb), 0.18), transparent 60%);
+        }
+
+        .capabilities-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .capability-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.45s ease, box-shadow 0.45s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+            border-color: rgba(var(--c-brand-rgb), 0.3);
+        }
+
+        .capability-card__media {
+            position: relative;
+            overflow: hidden;
+            height: 240px;
+        }
+
+        .capability-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: saturate(1.05);
+        }
+
+        .capability-card:hover .capability-card__media img {
+            transform: scale(1.08);
+        }
+
+        .capability-card__badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--c-brand);
+            border-radius: 999px;
+            padding: 6px 16px;
+        }
+
+        .capability-card__content {
+            padding: 28px 26px 34px;
+            background: rgba(0, 0, 0, 0.42);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .capability-card__content h4 {
+            color: var(--c-white);
+            margin-bottom: 14px;
+            font-size: 1.35rem;
+        }
+
+        .capability-card__intro {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 22px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .capability-card__section {
+            margin-bottom: 22px;
+        }
+
+        .capability-card__section h6 {
+            color: var(--c-brand);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .capability-card__section p,
+        .capability-card__section li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .capability-card__section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .capability-card__section li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+        }
+
+        .capability-card__section li::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--c-brand);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .capability-card__link {
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--c-brand);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .capability-card__link:hover {
+            gap: 12px;
+            color: var(--c-brand-light);
+        }
+
+        .capability-card__link::after {
+            content: "\2192";
+            font-size: 1rem;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            grid-auto-flow: dense;
+        }
+
+        @media (min-width: 768px) {
+            .capability-card:nth-child(2n) {
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .capability-card__media {
+                height: 200px;
+            }
+
+            .masonry-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="./assets/images/aithentic-wordmark.svg" class="brand-logo" alt="Aithentic logo"
+                    loading="lazy" />
+            </a>
+            <button class="navbar-toggler bg-white opacity-50" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/capabilities.html">Capabilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#works">Showcase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#blog">Insights</a>
+                    </li>
+                </ul>
+                <a href="/contact.html" class="btn btn-brand ms-lg-3">Book a discovery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="capabilities-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-3 fw-semibold text-white mb-4">10 Specialized Capabilities</h1>
+                    <div class="line mx-auto"></div>
+                    <p class="lead text-white-50">Each capability combines strategy, motion, and full-stack craft to transform your product launch from concept to conversion. We blend immersive storytelling with engineering precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-black">
+        <div class="container">
+            <div class="masonry-grid">
+
+                <!-- Service 1: UI/UX Design -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+                            alt="UI/UX Design" loading="lazy">
+                        <span class="capability-card__badge">Design Ops</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>UI/UX Design</h4>
+                        <p class="capability-card__intro">Component-driven interfaces and design tokens that drop straight into your engineering workflow, crafted for clarity and conversion.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Discovery: Map user journeys and pain points across your product ecosystem</li>
+                                <li>Design: Create pixel-perfect mockups with accessibility and responsive design principles</li>
+                                <li>Prototype: Build interactive Figma prototypes with real data and micro-interactions</li>
+                                <li>Handoff: Deliver design tokens, component libraries, and developer documentation</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Complete design system with typography, color palettes, and spacing scales</li>
+                                <li>Component library optimized for React, Vue, or your framework of choice</li>
+                                <li>Interactive prototypes with conditional logic and data binding</li>
+                                <li>Accessibility audit report (WCAG 2.1 AA compliance)</li>
+                                <li>Design QA checklist for engineering handoff</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>We use GSAP to choreograph smooth page transitions, card reveals, and state changes that feel native. Every micro-interaction?from button hovers to form validation?is timed to reduce cognitive load and guide attention. Scroll-triggered animations using ScrollTrigger create cinematic moments as users explore your product.</p>
+                        </div>
+
+                        <a href="/services/ui-ux-design.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Web Development -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=900&q=80"
+                            alt="Web Development" loading="lazy">
+                        <span class="capability-card__badge">Webcraft</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Web Development</h4>
+                        <p class="capability-card__intro">Fast, secure, and scalable websites built with modern frameworks. We ship pixel-perfect builds that marketing and engineering teams can confidently iterate on.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Architecture: Select optimal tech stack (Next.js, React, Node.js) based on your scale and goals</li>
+                                <li>Development: Write clean, modular code with comprehensive testing coverage</li>
+                                <li>Integration: Connect APIs, databases, CMS, and third-party services seamlessly</li>
+                                <li>Deployment: Configure CI/CD pipelines, hosting, and performance monitoring</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Full React/Next.js codebase with TypeScript and modern best practices</li>
+                                <li>Headless CMS integration (Contentful, Sanity, or custom solution)</li>
+                                <li>SEO-optimized architecture with structured data and meta management</li>
+                                <li>Performance optimization achieving 90+ Lighthouse scores</li>
+                                <li>DevOps setup with automated testing and deployment pipelines</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>GSAP powers our page-load sequences and scroll-based reveals, creating buttery-smooth 60fps animations. We implement advanced techniques like parallax scrolling, SVG morphing, and physics-based motion that make your web presence feel premium. Every animation is GPU-accelerated and optimized for mobile performance.</p>
+                        </div>
+
+                        <a href="/services/web-development.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 3: App Development -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+                            alt="App Development" loading="lazy">
+                        <span class="capability-card__badge">Mobile</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>App Development</h4>
+                        <p class="capability-card__intro">Native-quality mobile applications that deliver exceptional performance across iOS and Android. Built for scale, designed for delight.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Platform Selection: Choose between React Native, Flutter, or native Swift/Kotlin</li>
+                                <li>UI Implementation: Build adaptive interfaces that feel native on each platform</li>
+                                <li>Backend Integration: Connect to your APIs, databases, and cloud services</li>
+                                <li>Testing & Launch: Comprehensive QA, App Store optimization, and deployment support</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Production-ready iOS and Android applications</li>
+                                <li>Offline-first architecture with data synchronization</li>
+                                <li>Push notification system with personalization logic</li>
+                                <li>Analytics instrumentation and crash reporting setup</li>
+                                <li>App Store assets, screenshots, and submission support</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>We leverage native animation APIs and GSAP for cross-platform consistency. Gesture-based interactions use spring physics for natural feel, while screen transitions employ shared element animations. Every animation is profiled to maintain 60fps, even on mid-range devices, ensuring smooth experiences for all users.</p>
+                        </div>
+
+                        <a href="/services/app-development.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 4: Interactive Prototype Theatre -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80"
+                            alt="Interactive Prototype Theatre" loading="lazy">
+                        <span class="capability-card__badge">Prototype</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Interactive Prototype Theatre</h4>
+                        <p class="capability-card__intro">Scenario-driven prototypes that combine motion, narration, and data hooks to accelerate buy-in before a single line of production code is written.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Story Mapping: Define key user scenarios and conversion moments</li>
+                                <li>Prototype Building: Create clickable demos with branching flows and conditional logic</li>
+                                <li>Media Integration: Layer in video, audio, and live data feeds for realism</li>
+                                <li>Presenter Toolkit: Develop guided scripts and talking points for consistent demos</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>High-fidelity prototypes with real content and interactive states</li>
+                                <li>Demo scenarios tailored for sales, investor pitches, and user testing</li>
+                                <li>Video walkthroughs with voiceover narration for async sharing</li>
+                                <li>Analytics hooks to track viewer engagement and drop-off points</li>
+                                <li>Presenter playbooks with objection handlers and talking tracks</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>GSAP orchestrates multi-step animations that unfold like a guided tour. We use timeline-based sequences to reveal features progressively, with smooth camera-like pans and zooms. Motion cues direct attention to key UI elements at exactly the right moment, creating an immersive demonstration that feels like using the real product.</p>
+                        </div>
+
+                        <a href="/services/interactive-prototype.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Brand & Launch Identity -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+                            alt="Brand & Launch Identity" loading="lazy">
+                        <span class="capability-card__badge">Identity</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Brand & Launch Identity</h4>
+                        <p class="capability-card__intro">Comprehensive visual and motion systems that cement how your product shows up across every channel?from pitch decks to social media.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Brand Strategy: Define voice, positioning, and visual territory through workshops</li>
+                                <li>Visual Design: Create logos, color systems, typography, and illustration styles</li>
+                                <li>Motion Language: Design animation principles and transitions that become your signature</li>
+                                <li>Asset Production: Build template libraries for decks, social, video, and web</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Logo suite with multiple variations and usage guidelines</li>
+                                <li>Brand style guide covering color, typography, imagery, and tone</li>
+                                <li>Motion design system with timing curves, transitions, and principles</li>
+                                <li>Template kits for Figma, PowerPoint, Keynote, and video editors</li>
+                                <li>Social media asset library with pre-sized graphics and animations</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>We establish your brand's motion signature using GSAP?defining easing curves, entrance patterns, and transition styles that become instantly recognizable. From logo reveals to full-screen hero sequences, every animation adheres to a unified timing language. These motion principles scale across web, mobile, and video, creating cohesive brand presence.</p>
+                        </div>
+
+                        <a href="/services/brand-identity.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Growth Analytics & Enablement -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=900&q=80"
+                            alt="Growth Analytics & Enablement" loading="lazy">
+                        <span class="capability-card__badge">Insights</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Growth Analytics & Enablement</h4>
+                        <p class="capability-card__intro">Measurement and enablement infrastructure that keeps product, marketing, and revenue teams aligned long after launch.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Instrumentation: Set up event tracking, funnel analytics, and cohort segmentation</li>
+                                <li>Dashboard Design: Build executive and operational dashboards for quick insights</li>
+                                <li>Automation: Configure CRM sync, email triggers, and Slack notifications</li>
+                                <li>Training: Create playbooks, scripts, and certification programs for internal teams</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Analytics implementation with Segment, Mixpanel, or custom solution</li>
+                                <li>Custom dashboards translating behavior into actionable metrics</li>
+                                <li>Marketing automation workflows connecting to HubSpot, Salesforce, or Intercom</li>
+                                <li>Enablement portal with training videos, FAQs, and battle cards</li>
+                                <li>Sales playbooks with objection handlers and demo scripts</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>GSAP brings data to life in dashboards through animated chart transitions, number counters, and progress indicators. We use motion to highlight trends and anomalies?bars that pulse when thresholds are crossed, lines that trace paths to draw attention. These visual cues make complex data digestible and actionable for stakeholders at every level.</p>
+                        </div>
+
+                        <a href="/services/growth-analytics.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 7: AI/ML Interface Design -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
+                            alt="AI/ML Interface Design" loading="lazy">
+                        <span class="capability-card__badge">AI/ML</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>AI/ML Interface Design</h4>
+                        <p class="capability-card__intro">Specialized interfaces for AI-powered products that make complex algorithms feel intuitive, trustworthy, and human-centered.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Model Understanding: Map AI capabilities, confidence levels, and edge cases</li>
+                                <li>Interaction Design: Create prompts, suggestions, and feedback loops that guide users</li>
+                                <li>Transparency Patterns: Design explanations, confidence scores, and reasoning displays</li>
+                                <li>Testing: Validate patterns with real users and refine based on comprehension</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>AI interaction pattern library with prompt design and response formatting</li>
+                                <li>Loading state designs that communicate AI processing in real-time</li>
+                                <li>Confidence visualization components showing model certainty</li>
+                                <li>Error and fallback patterns for graceful degradation</li>
+                                <li>Accessibility guidelines for AI-generated content and interactions</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>We use GSAP to visualize AI processes through animated thinking indicators, data flow visualizations, and progressive generation reveals. Particle systems and morphing shapes communicate processing states without boring spinners. When AI outputs arrive, staggered text reveals and highlight animations help users parse results naturally, building trust through transparency.</p>
+                        </div>
+
+                        <a href="/services/ai-ml-interface.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 8: Product Video Strategy -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80"
+                            alt="Product Video Strategy" loading="lazy">
+                        <span class="capability-card__badge">Video</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Product Video Strategy</h4>
+                        <p class="capability-card__intro">Cinematic product videos and explainer content that transform complex features into compelling visual narratives for every stage of the funnel.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Storyboarding: Map video narrative arc with hooks, problem/solution, and CTA</li>
+                                <li>Production: Capture screen recordings, motion graphics, and live-action footage</li>
+                                <li>Post-Production: Edit with professional color grading, sound design, and effects</li>
+                                <li>Distribution: Optimize videos for web, social, email, and sales enablement</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Hero launch video (60-90 seconds) for homepage and social</li>
+                                <li>Feature explainer series highlighting specific capabilities</li>
+                                <li>Customer testimonial videos with production and editing</li>
+                                <li>Video library with versions optimized for each platform</li>
+                                <li>Video SEO setup with transcripts, captions, and metadata</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>GSAP orchestrates complex video sequences?syncing UI animations, text reveals, and camera movements to musical beats. We create kinetic typography, data visualization sequences, and interface fly-throughs that maintain momentum throughout. Every transition is choreographed to maintain viewer attention, with motion that reinforces your brand's personality and positioning.</p>
+                        </div>
+
+                        <a href="/services/product-video.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 9: Design System Audit -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=900&q=80"
+                            alt="Design System Audit" loading="lazy">
+                        <span class="capability-card__badge">Audit</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Design System Audit</h4>
+                        <p class="capability-card__intro">Comprehensive evaluation and optimization of existing design systems to improve consistency, efficiency, and scalability across your product suite.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Inventory: Document all components, patterns, and design tokens across platforms</li>
+                                <li>Analysis: Identify inconsistencies, technical debt, and accessibility gaps</li>
+                                <li>Recommendations: Prioritize fixes and enhancements based on impact</li>
+                                <li>Roadmap: Create phased implementation plan with team training</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Design system audit report with findings and severity ratings</li>
+                                <li>Component inventory documenting variants and usage patterns</li>
+                                <li>Accessibility compliance review against WCAG 2.1 standards</li>
+                                <li>Optimization roadmap with effort estimates and priority rankings</li>
+                                <li>Training materials for design and engineering teams</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>We audit existing animation patterns using GSAP performance profilers, identifying janky transitions and inconsistent timing. Our recommendations establish motion token systems?reusable duration and easing presets that ensure every animation feels cohesive. We document interaction states with annotated videos, creating a motion language that scales across your entire product ecosystem.</p>
+                        </div>
+
+                        <a href="/services/design-system-audit.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Service 10: Sales Enablement Portals -->
+                <div class="capability-card" data-capability-card>
+                    <div class="capability-card__media">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+                            alt="Sales Enablement Portals" loading="lazy">
+                        <span class="capability-card__badge">Enablement</span>
+                    </div>
+                    <div class="capability-card__content">
+                        <h4>Sales Enablement Portals</h4>
+                        <p class="capability-card__intro">Custom internal platforms that equip sales teams with demos, collateral, training, and real-time product updates to close deals faster.</p>
+
+                        <div class="capability-card__section">
+                            <h6>How It Works</h6>
+                            <ul>
+                                <li>Discovery: Interview sales reps to understand pain points and content gaps</li>
+                                <li>Architecture: Design portal structure with role-based access and content taxonomy</li>
+                                <li>Development: Build searchable library with version control and analytics</li>
+                                <li>Launch: Train team on portal usage and establish content governance</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Key Deliverables</h6>
+                            <ul>
+                                <li>Custom portal with role-based permissions and content organization</li>
+                                <li>Asset library housing decks, one-pagers, case studies, and demo videos</li>
+                                <li>Interactive battlecards with competitor intelligence and objection handlers</li>
+                                <li>Usage analytics showing which content drives deals forward</li>
+                                <li>CRM integration syncing relevant assets into sales workflows</li>
+                            </ul>
+                        </div>
+
+                        <div class="capability-card__section">
+                            <h6>Motion/Animation Strategy</h6>
+                            <p>GSAP enhances portal usability through smooth search filters, content card reveals, and sidebar transitions. We implement smart loading states and skeleton screens that maintain engagement during data fetches. Document preview animations use page-flip effects and zoom transitions, while dashboard metrics animate in with staggered counters that celebrate team wins and drive motivation.</p>
+                        </div>
+
+                        <a href="/services/sales-enablement.html" class="capability-card__link">Read More</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-12 text-center">
+                    <h3 class="text-white mb-4">Ready to elevate your product launch?</h3>
+                    <a href="/contact.html" class="btn btn-brand btn-lg px-5 py-3">Start Your Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black">
+        <div class="line1"></div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="/" class="footer-brand">
+                            <img src="./assets/images/aithentic-wordmark.svg" alt="Aithentic logo" loading="lazy">
+                        </a>
+                        <div class="line"></div>
+                        <p class="text-white-50">Aithentic choreographs product showcases, demo journeys, and enablement
+                            stacks for teams shipping the future.</p>
+                        <div class="social-icons">
+                            <a class="footer-link" href="https://www.linkedin.com/in/kramit2005" target="_blank"
+                                aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                            <a class="footer-link" href="#" aria-label="Dribbble"><i class="ri-dribbble-line"></i></a>
+                            <a class="footer-link" href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                            <a class="footer-link" href="https://www.behance.net/mayankkumar250" target="_blank"
+                                aria-label="behance"><i class="ri-behance-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Launch stack</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/capabilities.html">Narrative systems</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Interactive prototypes</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Analytics storytelling</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">All services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Resources</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/#blog">Insights hub</a></li>
+                            <li><a class="footer-link" href="/#works">Showcase library</a></li>
+                            <li><a class="footer-link" href="/#reviews">Client notes</a></li>
+                            <li><a class="footer-link" href="/contact.html">Project kickoff</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Stay in the loop</h5>
+                        <div class="line"></div>
+                        <p class="text-white-50">Monthly digest on launch rituals, product storytelling, and motion
+                            systems.</p>
+                        <form class="footer-form" id="footerSubscribe">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                <button class="btn btn-brand" type="submit">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Aithentic Studios. All rights reserved.</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="mb-0">Built for builders who ship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Initialize AOS
+        if (window.AOS) {
+            AOS.init({
+                offset: 140,
+                delay: 0,
+                duration: 900,
+                easing: 'ease',
+                once: false,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+        }
+
+        // Initialize GSAP ScrollTrigger for capability cards
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Staggered entrance animation for capability cards
+            gsap.utils.toArray('[data-capability-card]').forEach((card, index) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 80,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: (index % 3) * 0.15 // Stagger effect based on position
+                });
+            });
+        }
+
+        // Footer subscribe form
+        const footerForm = document.getElementById('footerSubscribe');
+        if (footerForm) {
+            footerForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const emailInput = footerForm.querySelector('input[type="email"]');
+                const email = (emailInput?.value || '').trim();
+                
+                if (email && typeof Swal !== 'undefined') {
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'You are on the list',
+                        text: 'Expect monthly notes packed with launch rituals and product storytelling tips.',
+                        confirmButtonColor: '#44d125'
+                    });
+                    footerForm.reset();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI/UX Design Services | Aithentic</title>
+    <meta name="description"
+        content="Expert UI/UX design services that craft intuitive and visually stunning user experiences. Component-driven interfaces built for conversion." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../assets/images/aithentic-mark.svg" type="image/svg+xml" />
+    <style>
+        .service-detail-hero {
+            background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96)),
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80');
+            background-position: center;
+            background-size: cover;
+            padding-top: 140px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(var(--c-brand-rgb), 0.22), transparent 60%);
+        }
+
+        .service-detail-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            padding: 8px 20px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.7rem;
+            background: rgba(var(--c-brand-rgb), 0.22);
+            color: var(--c-white);
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border-radius: 18px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--c-brand-rgb), 0.4);
+        }
+
+        .feature-box__icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(var(--c-brand-rgb), 0.16);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-box__icon i {
+            font-size: 1.8rem;
+            color: var(--c-brand);
+        }
+
+        .feature-box h4 {
+            color: var(--c-white);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-box p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .process-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .process-step__number {
+            flex: 0 0 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--c-brand), var(--c-brand-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step__content {
+            flex: 1;
+            padding-top: 10px;
+        }
+
+        .process-step__content h4 {
+            color: var(--c-white);
+            margin-bottom: 12px;
+        }
+
+        .process-step__content p {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .image-showcase img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .image-showcase img:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .stat-box__value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--c-brand);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-box__label {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="../assets/images/aithentic-wordmark.svg" class="brand-logo" alt="Aithentic logo"
+                    loading="lazy" />
+            </a>
+            <button class="navbar-toggler bg-white opacity-50" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/capabilities.html">Capabilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#works">Showcase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#blog">Insights</a>
+                    </li>
+                </ul>
+                <a href="/contact.html" class="btn btn-brand ms-lg-3">Book a discovery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="service-detail-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="service-badge">Design Ops</span>
+                    <h1 class="display-2 fw-semibold text-white mb-4">UI/UX Design</h1>
+                    <p class="lead text-white-50">Component-driven interfaces and design tokens that drop straight into your engineering workflow. We craft experiences that engage, inspire, and convert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-black">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="text-white mb-4">Design That Drives Results</h2>
+                    <p class="text-white-50 mb-4">In today's digital landscape, user experience is the competitive edge. Our UI/UX design approach combines psychology, aesthetics, and engineering precision to create interfaces that users love and businesses rely on.</p>
+                    <p class="text-white-50 mb-4">We don't just make things look good?we architect experiences that guide users from discovery to conversion, reduce support tickets by 40%, and empower your team with design systems that scale.</p>
+                    <a href="/contact.html" class="btn btn-brand mt-3">Start Your Design Project</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/c9Wg6Cb_YlU" 
+                            title="UI/UX Design Process" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-12 text-center mb-4">
+                    <h3 class="text-white">Our Design Philosophy</h3>
+                    <div class="line mx-auto"></div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box__icon">
+                        <i class="ri-user-heart-line"></i>
+                    </div>
+                    <h4>User-Centered</h4>
+                    <p>Every design decision is validated through user research, testing, and behavioral analytics. We design for real people, not assumptions.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box__icon">
+                        <i class="ri-paint-brush-line"></i>
+                    </div>
+                    <h4>Pixel Perfect</h4>
+                    <p>Obsessive attention to spacing, typography, and visual hierarchy ensures every screen is polished and production-ready.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box__icon">
+                        <i class="ri-code-s-slash-line"></i>
+                    </div>
+                    <h4>Developer-Friendly</h4>
+                    <p>Design tokens, component libraries, and comprehensive documentation make handoff seamless and implementation accurate.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-box__icon">
+                        <i class="ri-accessible-line"></i>
+                    </div>
+                    <h4>Accessible by Default</h4>
+                    <p>WCAG 2.1 AA compliance built into every component. Inclusive design isn't optional?it's fundamental.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-box__icon">
+                        <i class="ri-device-line"></i>
+                    </div>
+                    <h4>Mobile-First</h4>
+                    <p>Responsive design that adapts fluidly across devices, ensuring exceptional experiences on every screen size.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-box__icon">
+                        <i class="ri-speed-line"></i>
+                    </div>
+                    <h4>Performance-Optimized</h4>
+                    <p>Lightweight designs that load fast and animate smoothly, maintaining 60fps even on mid-range devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="text-white mb-4">Our Design Process</h2>
+                    <div class="line mx-auto"></div>
+                    <p class="text-white-50">A proven methodology that transforms product goals into intuitive interfaces</p>
+                </div>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step__number">1</div>
+                    <div class="process-step__content">
+                        <h4>Discovery & Research</h4>
+                        <p>We begin by understanding your users, business goals, and competitive landscape. Through stakeholder interviews, user research, and analytics review, we map the current experience and identify opportunities. Deliverables include user personas, journey maps, and a prioritized feature roadmap.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step__number">2</div>
+                    <div class="process-step__content">
+                        <h4>Information Architecture</h4>
+                        <p>We structure content and features into logical hierarchies that make sense to users. Card sorting exercises and site mapping ensure intuitive navigation. This phase produces wireframes and interaction flows that define the skeleton of your product.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step__number">3</div>
+                    <div class="process-step__content">
+                        <h4>Visual Design & Prototyping</h4>
+                        <p>We bring wireframes to life with your brand identity, creating high-fidelity mockups in Figma. Design systems with reusable components, color palettes, and typography scales ensure consistency. Interactive prototypes with micro-interactions demonstrate the final experience.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step__number">4</div>
+                    <div class="process-step__content">
+                        <h4>User Testing & Iteration</h4>
+                        <p>We validate designs with real users through moderated usability tests and A/B experiments. Heatmaps and session recordings reveal friction points. Based on insights, we refine designs to maximize conversion and satisfaction before development.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="process-step__number">5</div>
+                    <div class="process-step__content">
+                        <h4>Developer Handoff & QA</h4>
+                        <p>We deliver design specs, assets, and component documentation formatted for your tech stack. During development, we provide design QA to ensure pixel-perfect implementation. Post-launch, we analyze metrics to inform future iterations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-black">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="text-white mb-4">Design Examples</h2>
+                    <div class="line mx-auto"></div>
+                    <p class="text-white-50">Recent projects showcasing our design capabilities</p>
+                </div>
+            </div>
+
+            <div class="image-showcase">
+                <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=80" 
+                     alt="Dashboard Design" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" 
+                     alt="Mobile App Design" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80" 
+                     alt="Web Interface" data-aos="zoom-in" data-aos-delay="300">
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
+                        <span class="stat-box__value">40%</span>
+                        <span class="stat-box__label">Reduction in Support Tickets</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
+                        <span class="stat-box__value">3x</span>
+                        <span class="stat-box__label">Faster Time to Market</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
+                        <span class="stat-box__value">98%</span>
+                        <span class="stat-box__label">Client Satisfaction Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Ready to Transform Your User Experience?</h2>
+                    <p class="text-white-50 mb-4">Let's discuss how our UI/UX design expertise can help you create interfaces that users love and that drive measurable business results.</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="/contact.html" class="btn btn-brand btn-lg">Start Your Project</a>
+                        <a href="/capabilities.html" class="btn btn-outline-light btn-lg">View All Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black">
+        <div class="line1"></div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="/" class="footer-brand">
+                            <img src="../assets/images/aithentic-wordmark.svg" alt="Aithentic logo" loading="lazy">
+                        </a>
+                        <div class="line"></div>
+                        <p class="text-white-50">Aithentic choreographs product showcases, demo journeys, and enablement
+                            stacks for teams shipping the future.</p>
+                        <div class="social-icons">
+                            <a class="footer-link" href="https://www.linkedin.com/in/kramit2005" target="_blank"
+                                aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                            <a class="footer-link" href="#" aria-label="Dribbble"><i class="ri-dribbble-line"></i></a>
+                            <a class="footer-link" href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                            <a class="footer-link" href="https://www.behance.net/mayankkumar250" target="_blank"
+                                aria-label="behance"><i class="ri-behance-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Launch stack</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/capabilities.html">Narrative systems</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Interactive prototypes</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Analytics storytelling</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">All services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Resources</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/#blog">Insights hub</a></li>
+                            <li><a class="footer-link" href="/#works">Showcase library</a></li>
+                            <li><a class="footer-link" href="/#reviews">Client notes</a></li>
+                            <li><a class="footer-link" href="/contact.html">Project kickoff</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Stay in the loop</h5>
+                        <div class="line"></div>
+                        <p class="text-white-50">Monthly digest on launch rituals, product storytelling, and motion
+                            systems.</p>
+                        <form class="footer-form" id="footerSubscribe">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                <button class="btn btn-brand" type="submit">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Aithentic Studios. All rights reserved.</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="mb-0">Built for builders who ship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script>
+        if (window.AOS) {
+            AOS.init({
+                offset: 100,
+                delay: 0,
+                duration: 800,
+                easing: 'ease',
+                once: true
+            });
+        }
+
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.process-step', {
+                scrollTrigger: {
+                    trigger: '.process-timeline',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                x: -50,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        }
+
+        const footerForm = document.getElementById('footerSubscribe');
+        if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing!');
+                footerForm.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>

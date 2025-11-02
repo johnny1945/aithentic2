@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Development Services | Aithentic</title>
+    <meta name="description"
+        content="Expert web development services using React, Next.js, and modern frameworks. Fast, secure, and scalable websites built for performance." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../assets/images/aithentic-mark.svg" type="image/svg+xml" />
+    <style>
+        .service-detail-hero {
+            background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96)),
+                        url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=1600&q=80');
+            background-position: center;
+            background-size: cover;
+            padding-top: 140px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(var(--c-brand-rgb), 0.22), transparent 60%);
+        }
+
+        .service-detail-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            padding: 8px 20px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.7rem;
+            background: rgba(var(--c-brand-rgb), 0.22);
+            color: var(--c-white);
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .tech-item {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border-radius: 16px;
+            padding: 30px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--c-brand-rgb), 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .tech-item i {
+            font-size: 3rem;
+            color: var(--c-brand);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .tech-item span {
+            color: var(--c-white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border-radius: 18px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--c-brand-rgb), 0.4);
+        }
+
+        .feature-box__icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(var(--c-brand-rgb), 0.16);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-box__icon i {
+            font-size: 1.8rem;
+            color: var(--c-brand);
+        }
+
+        .feature-box h4 {
+            color: var(--c-white);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-box p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .image-showcase img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .image-showcase img:hover {
+            transform: scale(1.05);
+        }
+
+        .code-preview {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(var(--c-brand-rgb), 0.2);
+            overflow-x: auto;
+        }
+
+        .code-preview pre {
+            margin: 0;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-preview code {
+            color: var(--c-brand);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="../assets/images/aithentic-wordmark.svg" class="brand-logo" alt="Aithentic logo"
+                    loading="lazy" />
+            </a>
+            <button class="navbar-toggler bg-white opacity-50" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/capabilities.html">Capabilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#works">Showcase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#blog">Insights</a>
+                    </li>
+                </ul>
+                <a href="/contact.html" class="btn btn-brand ms-lg-3">Book a discovery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="service-detail-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="service-badge">Webcraft</span>
+                    <h1 class="display-2 fw-semibold text-white mb-4">Web Development</h1>
+                    <p class="lead text-white-50">Fast, secure, and scalable websites built with modern frameworks. We ship pixel-perfect code that marketing and engineering teams can confidently iterate on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-black">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="text-white mb-4">Modern Web Development Excellence</h2>
+                    <p class="text-white-50 mb-4">We build web experiences that combine cutting-edge technology with timeless design principles. Our development approach prioritizes performance, scalability, and maintainability?ensuring your website grows with your business.</p>
+                    <p class="text-white-50 mb-4">From blazing-fast landing pages to complex web applications, we leverage React, Next.js, and the latest web standards to deliver exceptional results. Every line of code is crafted for readability, performance, and long-term success.</p>
+                    <a href="/contact.html" class="btn btn-brand mt-3">Start Your Web Project</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/gieEQFIfgYc" 
+                            title="Modern Web Development" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-12 text-center mb-4">
+                    <h3 class="text-white">Our Technology Stack</h3>
+                    <div class="line mx-auto"></div>
+                    <p class="text-white-50">We work with modern, battle-tested technologies</p>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="ri-reactjs-line"></i>
+                    <span>React</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="ri-pages-line"></i>
+                    <span>Next.js</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="ri-node-tree"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="ri-braces-line"></i>
+                    <span>TypeScript</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="ri-palette-line"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
+                    <i class="ri-git-branch-line"></i>
+                    <span>GraphQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="text-white mb-4">What We Deliver</h2>
+                    <div class="line mx-auto"></div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box__icon">
+                        <i class="ri-rocket-line"></i>
+                    </div>
+                    <h4>Lightning-Fast Performance</h4>
+                    <p>Optimized code, lazy loading, and CDN delivery ensure sub-second page loads. We achieve 90+ Lighthouse scores consistently.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box__icon">
+                        <i class="ri-search-eye-line"></i>
+                    </div>
+                    <h4>SEO-Optimized Architecture</h4>
+                    <p>Server-side rendering, semantic HTML, and structured data maximize search visibility and organic traffic.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box__icon">
+                        <i class="ri-shield-check-line"></i>
+                    </div>
+                    <h4>Enterprise Security</h4>
+                    <p>Authentication, encryption, and security best practices protect your data and your users.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-box__icon">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <h4>Mobile-First Responsive</h4>
+                    <p>Adaptive layouts that work flawlessly across all devices, from mobile phones to ultra-wide monitors.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-box__icon">
+                        <i class="ri-loop-left-line"></i>
+                    </div>
+                    <h4>CI/CD Automation</h4>
+                    <p>Automated testing and deployment pipelines ensure fast, reliable releases with zero downtime.</p>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-box__icon">
+                        <i class="ri-bar-chart-box-line"></i>
+                    </div>
+                    <h4>Analytics Integration</h4>
+                    <p>Built-in event tracking and analytics provide insights into user behavior and conversion metrics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-black">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="text-white mb-4">Development Showcase</h2>
+                    <div class="line mx-auto"></div>
+                    <p class="text-white-50">Recent web projects built with cutting-edge technology</p>
+                </div>
+            </div>
+
+            <div class="image-showcase">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                     alt="Web Dashboard" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80" 
+                     alt="E-commerce Website" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" 
+                     alt="Web Application" data-aos="zoom-in" data-aos-delay="300">
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-lg-6 offset-lg-3">
+                    <h3 class="text-white mb-4 text-center">Clean, Maintainable Code</h3>
+                    <div class="code-preview" data-aos="fade-up">
+                        <pre><code>// Example: Modern React Component
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+export function ProductCard({ product }) {
+  const [isInView, setIsInView] = useState(false);
+  
+  return (
+    &lt;motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="product-card"
+    &gt;
+      &lt;img src={product.image} alt={product.name} /&gt;
+      &lt;h3&gt;{product.name}&lt;/h3&gt;
+      &lt;p&gt;{product.description}&lt;/p&gt;
+    &lt;/motion.div&gt;
+  );
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: linear-gradient(180deg, rgba(7, 9, 24, 0.92), rgba(4, 5, 15, 0.96));">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Ready to Build Something Exceptional?</h2>
+                    <p class="text-white-50 mb-4">Let's discuss how our web development expertise can bring your vision to life with modern, scalable technology.</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="/contact.html" class="btn btn-brand btn-lg">Start Your Project</a>
+                        <a href="/capabilities.html" class="btn btn-outline-light btn-lg">View All Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black">
+        <div class="line1"></div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="/" class="footer-brand">
+                            <img src="../assets/images/aithentic-wordmark.svg" alt="Aithentic logo" loading="lazy">
+                        </a>
+                        <div class="line"></div>
+                        <p class="text-white-50">Aithentic choreographs product showcases, demo journeys, and enablement
+                            stacks for teams shipping the future.</p>
+                        <div class="social-icons">
+                            <a class="footer-link" href="https://www.linkedin.com/in/kramit2005" target="_blank"
+                                aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                            <a class="footer-link" href="#" aria-label="Dribbble"><i class="ri-dribbble-line"></i></a>
+                            <a class="footer-link" href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                            <a class="footer-link" href="https://www.behance.net/mayankkumar250" target="_blank"
+                                aria-label="behance"><i class="ri-behance-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Launch stack</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/capabilities.html">Narrative systems</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Interactive prototypes</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">Analytics storytelling</a></li>
+                            <li><a class="footer-link" href="/capabilities.html">All services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Resources</h5>
+                        <div class="line"></div>
+                        <ul>
+                            <li><a class="footer-link" href="/#blog">Insights hub</a></li>
+                            <li><a class="footer-link" href="/#works">Showcase library</a></li>
+                            <li><a class="footer-link" href="/#reviews">Client notes</a></li>
+                            <li><a class="footer-link" href="/contact.html">Project kickoff</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h5 class="mb-0 text-white">Stay in the loop</h5>
+                        <div class="line"></div>
+                        <p class="text-white-50">Monthly digest on launch rituals, product storytelling, and motion
+                            systems.</p>
+                        <form class="footer-form" id="footerSubscribe">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                <button class="btn btn-brand" type="submit">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Aithentic Studios. All rights reserved.</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="mb-0">Built for builders who ship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script>
+        if (window.AOS) {
+            AOS.init({
+                offset: 100,
+                delay: 0,
+                duration: 800,
+                easing: 'ease',
+                once: true
+            });
+        }
+
+        const footerForm = document.getElementById('footerSubscribe');
+        if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing!');
+                footerForm.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>
